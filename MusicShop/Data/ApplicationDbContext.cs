@@ -9,8 +9,8 @@ namespace MusicShop.Data
             : base(options)
         {
         }
-        DbSet<Product> Products { get; set; }   
-        DbSet<Category> Categories { get; set; }   
-        DbSet<Order> Orders { get; set; }   
+        public DbSet<Product> Products { get; set; }   
+        public DbSet<Category> Categories { get; set; }   
+        public DbSet<Order> Orders { get; set; }   
     }
 }

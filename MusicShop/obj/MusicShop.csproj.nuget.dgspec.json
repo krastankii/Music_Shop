@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\krastanskii 12D\\MusicShop\\MusicShop.csproj": {}
+    "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj": {}
   },
   "projects": {
-    "C:\\krastanskii 12D\\MusicShop\\MusicShop.csproj": {
+    "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\krastanskii 12D\\MusicShop\\MusicShop.csproj",
+        "projectUniqueName": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj",
         "projectName": "MusicShop",
-        "projectPath": "C:\\krastanskii 12D\\MusicShop\\MusicShop.csproj",
-        "packagesPath": "C:\\Users\\STUDENTS-STEM1-4\\.nuget\\packages\\",
-        "outputPath": "C:\\krastanskii 12D\\MusicShop\\obj\\",
+        "projectPath": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj",
+        "packagesPath": "C:\\Users\\STUDENTS-1212-2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\STUDENTS-STEM1-4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\STUDENTS-1212-2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -57,6 +62,12 @@
               "version": "[8.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.1, )"
             }
@@ -80,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
