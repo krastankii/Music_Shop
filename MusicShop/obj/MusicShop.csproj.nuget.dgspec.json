@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj": {}
+    "C:\\Krastanskii 12d\\Music_Shop-main\\MusicShop\\MusicShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj": {
+    "C:\\Krastanskii 12d\\Music_Shop-main\\MusicShop\\MusicShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj",
+        "projectUniqueName": "C:\\Krastanskii 12d\\Music_Shop-main\\MusicShop\\MusicShop.csproj",
         "projectName": "MusicShop",
-        "projectPath": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\MusicShop.csproj",
+        "projectPath": "C:\\Krastanskii 12d\\Music_Shop-main\\MusicShop\\MusicShop.csproj",
         "packagesPath": "C:\\Users\\STUDENTS-1212-2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\STUDENTS-1212-2\\Source\\Repos\\Music_Shop\\MusicShop\\obj\\",
+        "outputPath": "C:\\Krastanskii 12d\\Music_Shop-main\\MusicShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\STUDENTS-1212-2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,15 +51,19 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
