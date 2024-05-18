@@ -14,6 +14,7 @@ namespace MusicShop.Data
         public string ImageUrl { get; set; }
         public int CategoryId { get; set; }
         public Category Categories { get; set; }
+        public DateTime DateUpdate { get; set; } = DateTime.Now;
         public ICollection<Order> Orders { get; set; }
     }
 }

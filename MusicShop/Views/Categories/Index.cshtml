@@ -4,7 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+
+<style>
+    .table {
+        vertical-align: middle;
+    }
+</style>
+<h1>Категории инструменти</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,13 +19,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Категория
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataUpdate)
+               Дата на промяна
             </th>
             <th></th>
         </tr>

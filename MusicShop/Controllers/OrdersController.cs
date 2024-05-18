@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +11,16 @@ using MusicShop.Data;
 
 namespace MusicShop.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Client> _userManager;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(ApplicationDbContext context, UserManager<Client> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Orders
@@ -48,8 +53,8 @@ namespace MusicShop.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id");
+            //ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
             return View();
         }
 
@@ -58,16 +63,18 @@ namespace MusicShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProductId,ClientId,Quantity,DataUpdate")] Order order)
+        public async Task<IActionResult> Create([Bind("ProductId,Quantity,DataUpdate")] Order order)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
+                order.DataUpdate = DateTime.Now;
+                order.ClientId = _userManager.GetUserId(User);
+                _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", order.ProductId);
+            //ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
 
@@ -84,8 +91,8 @@ namespace MusicShop.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", order.ProductId);
+            //ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
 
@@ -94,7 +101,7 @@ namespace MusicShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductId,ClientId,Quantity,DataUpdate")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductId,Quantity,DataUpdate")] Order order)
         {
             if (id != order.Id)
             {
@@ -105,7 +112,9 @@ namespace MusicShop.Controllers
             {
                 try
                 {
-                    _context.Update(order);
+                    order.DataUpdate = DateTime.Now;
+                    order.ClientId = _userManager.GetUserId(User);
+                    _context.Orders.Update(order);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -121,8 +130,8 @@ namespace MusicShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", order.ProductId);
+            //ViewData["ClientId"] = new SelectList(_context.Users, "Id", "Id", order.ClientId);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
 

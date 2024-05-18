@@ -47,7 +47,7 @@ namespace MusicShop.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -56,15 +56,16 @@ namespace MusicShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Brand,Quantity,Description,Price,ImageUrl,CategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Name,Brand,Quantity,Description,Price,ImageUrl,CategoryId,DateUpdate")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                product.DateUpdate = DateTime.Now;
+                _context.Products.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -81,7 +82,7 @@ namespace MusicShop.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -90,7 +91,7 @@ namespace MusicShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Brand,Quantity,Description,Price,ImageUrl,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Brand,Quantity,Description,Price,ImageUrl,CategoryId,DateUpdate")] Product product)
         {
             if (id != product.Id)
             {
@@ -101,7 +102,8 @@ namespace MusicShop.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    product.DateUpdate = DateTime.Now;
+                    _context.Products.Update(product);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -117,7 +119,7 @@ namespace MusicShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 

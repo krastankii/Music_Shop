@@ -9,18 +9,18 @@ using MusicShop.Data;
 
 #nullable disable
 
-namespace MusicShop.Data.Migrations
+namespace MusicShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240229095527_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20240518180907_Krustanski1")]
+    partial class Krustanski1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -198,6 +198,9 @@ namespace MusicShop.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DataUpdate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -303,6 +306,9 @@ namespace MusicShop.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("DateUpdate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
